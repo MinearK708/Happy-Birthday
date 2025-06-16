@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HBD Gita Sayang</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="flex justify-center items-center h-screen"
+    style="
+      background-image: url(https://images.unsplash.com/photo-1530273973427-22351773250c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+      background-repeat: no-repeat;
+      background-size: cover;
+    "
+  >
+    <div
+      class="border bg-white rounded-xl px-10 border-4 border-gray-300 py-8 shadow-lg shadow-pink-300 text-center animate__animated animate__backInDown m-8 w-80"
+      id="kartu"
+    >
+      <h1 class="text-3xl">Happy Birthday</h1>
+      <h3
+        class="text-4xl font-bold text-pink-500 animate__animated animate__infinite animate__pulse"
+      >
+        Gita Sayang
+      </h3>
+      <button
+        class="animate__animated animate__delay-1s animate__tada p-2 bg-pink-600 text-white rounded mt-5 hover:bg-pink-900 transition ease-in w-full"
+        onclick="bukaUcapan()"
+      >
+        Klik Disini
+      </button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <script>
+      const kartu = document.getElementById("kartu");
+
+      // Fungsi untuk menampilkan ucapan
+      function bukaUcapan() {
+        // Menambahkan animasi keluar sebelum mengubah konten
+        kartu.classList.add("animate__zoomOut");
+
+        // Menunggu animasi keluar selesai
+        setTimeout(() => {
+            kartu.innerHTML = `
+                <div class="animate__animated animate__zoomIn">
+                    <h1 class="font-semibold text-lg text-wrap">Maaf ya aku gabisa kasih kado fisik untuk sekarang, cuma ini yang bisa aku kasih. Mianhae aku lupa lebih dulu ngucapin 😥</h1>
+                    <h2 class="mt-4 text-xl font-bold animate__animated animate__fadeIn">- Dari Hati yang Tulus -</h2>
+                    <button onclick="location.reload()" class="p-2 bg-slate-600 text-white rounded mt-5 hover:bg-slate-900 transition ease-in w-full">Tutup</button>
+                </div>
+            `;
+            // Menghapus kelas animasi keluar dan menambahkan animasi masuk
+            kartu.classList.remove("animate__zoomOut");
+        }, 500); // Sesuaikan durasi dengan animasi keluar
+      }
+
+      // Efek konfeti saat halaman pertama kali dimuat
+      const defaults = {
+        spread: 360,
+        ticks: 100,
+        gravity: 0,
+        decay: 0.94,
+        startVelocity: 30,
+        shapes: ["heart"],
+        colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
+      };
+
+      function shoot() {
+        confetti({
+          ...defaults,
+          particleCount: 50,
+          scalar: 1.2,
+          shapes: ["heart"],
+        });
+
+        confetti({
+          ...defaults,
+          particleCount: 20,
+          scalar: 0.75,
+          shapes: ["circle"],
+        });
+      }
+
+      // Menembakkan konfeti saat halaman dimuat
+      setTimeout(shoot, 0);
+      setTimeout(shoot, 100);
+      setTimeout(shoot, 200);
+
+    </script>
+  </body>
+</html>
